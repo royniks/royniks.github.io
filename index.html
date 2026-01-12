@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>royniks/home</title>
+    <style>
+        body {
+            font-family: 'Serif', 'Times New Roman', serif;
+            text-align: center;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 0 20px 50px 20px;
+        }
+
+        header {
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            margin: 0 15px;
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 2rem;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .main-image {
+            max-width: 600px;
+            width: 100%;
+            margin-top: -20px;
+            height: auto;
+            margin-bottom: 10px; /* Reduced space for the clock */
+        }
+
+        /* Styling for the live clock */
+        #live-clock {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            font-family: monospace; /* Monospace looks great for running numbers */
+        }
+
+        .footer-links a {
+            text-decoration: underline;
+            color: #555;
+            margin: 0 5px;
+            font-size: 0.8rem;
+        }
+
+        #welcome-msg {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            margin: 10px 0 5px 0;
+            min-height: 1.5em; /* Prevents the page from jumping when text changes */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="https://royniks.mataroa.blog/" target="_blank">Blog</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <h1>royniks</h1>
+
+    <img src="pictures/old-house.jpg" alt="Old House" class="main-image">
+<div id="live-clock">Kolkata :: Loading...</div>
+  <div id="welcome-msg">Welcome</div>
+
+    <div class="footer-links">
+        <a href="yt.html">youtube</a> |
+        <a href="https://github.com/royniks" target="_blank">github</a> |
+        <a href="https://www.goodreads.com/user/show/197652820-royniks" target="_blank">goodreads</a> |
+        <a href="#">discord</a>
+    </div>
+
+<<script>
+    const messages = [
+        "Welcome",           // English
+        "환영합니다!",         // Korean (from your screenshot)
+        "स्वागत है",          // Hindi
+        "Bienvenue",         // French
+        "Willkommen",        // German
+        "Benvenuto",         // Italian
+        "いらっしゃいませ",    // Japanese
+        "¡Bienvenido!"       // Spanish
+    ];
+
+    let msgIndex = 0;
+
+    function updatePage() {
+        // 1. Update Clock (India/Kolkata)
+        const now = new Date();
+        const options = {
+            timeZone: 'Asia/Kolkata',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        };
+
+        let indiaTime = new Intl.DateTimeFormat('en-CA', options).format(now);
+        document.getElementById('live-clock').innerHTML = "Kolkata :: " + indiaTime;
+
+        // 2. Update Welcome Message
+        msgIndex = (msgIndex + 1) % messages.length;
+        document.getElementById('welcome-msg').innerText = messages[msgIndex];
+    }
+
+    // Run every 1000ms (1 second)
+    setInterval(updatePage, 1000);
+    updatePage();
+</script>
+</body>
+</html>
