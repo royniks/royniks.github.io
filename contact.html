@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - royniks</title>
     <style>
-        
         body {
             margin: 0;
             padding: 0;
@@ -37,6 +37,18 @@
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
+        .contact-links {
+                    display: flex;
+                    flex-direction: column; /* Stacks them vertically */
+                    align-items: center;    /* Centers them horizontally */
+                    gap: 10px;              /* Adds a nice space between the two links */
+                            margin-top: 20px;
+                        }
+
+        .contact-links a {
+            text-decoration: underline;
+            color: blue; /* Or your preferred link color */
+        }
     </style>
 </head>
 <body>
@@ -56,11 +68,10 @@
         <p class="greeting">
            If you want to reach out to me, please feel free to do so! 
         </p>
-
-        <a href="mailto:contactroyniks@gmail.com" class="email-link">
-            contactroyniks@gmail.com
-        </a>
-    
+<div class="contact-links">
+    <a href="mailto:contactroyniks@gmail.com">contactroyniks@gmail.com</a>
+    <a href="mailto:contactnikhill@yahoo.com">contactnikhill@yahoo.com</a>
+</div>
     </main>
 
 </body>
